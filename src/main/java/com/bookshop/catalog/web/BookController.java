@@ -2,6 +2,7 @@ package com.bookshop.catalog.web;
 
 import com.bookshop.catalog.domain.Book;
 import com.bookshop.catalog.domain.BookService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class BookController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Book post(@RequestBody Book book) {
+    public Book post(@Valid @RequestBody Book book) {
         return this.bookService.addToCatalog(book);
     }
 
@@ -40,7 +41,7 @@ public class BookController {
     }
 
     @PutMapping("{isbn}")
-    public void delete(@PathVariable String isbn, @RequestBody Book book) {
+    public void delete(@PathVariable String isbn, @Valid @RequestBody Book book) {
         bookService.editBookDetails(isbn, book);
     }
 }
