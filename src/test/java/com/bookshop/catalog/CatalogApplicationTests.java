@@ -8,6 +8,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(
+		// Loads a full Spring web application context
+		// and a Servlet container listening on a random port
 		webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 class CatalogApplicationTests {
